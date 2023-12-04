@@ -1,6 +1,6 @@
 %global gittag 14.1.0
 
-Name:           python3-kconfig
+Name:           kconfiglib
 Version:        %{gittag}
 Release:        1%{?dist}
 Summary:        Kconfig implementation in Python.
@@ -13,7 +13,15 @@ BuildArch:      noarch
 BuildRequires: python3-devel
 BuildRequires: python3-setuptools
 
+Requires: python3-kconfiglib
+
 %description
+TODO
+
+%package -n python3-kconfiglib
+Summary: Kconfig implementation in Python (library)
+
+%description -n python3-kconfiglib
 TODO
 
 %prep
@@ -28,7 +36,6 @@ TODO
 %files
 %doc README.rst
 %license LICENSE.txt
-# bin files
 %{_bindir}/alldefconfig
 %{_bindir}/allmodconfig
 %{_bindir}/allnoconfig
@@ -42,7 +49,10 @@ TODO
 %{_bindir}/olddefconfig
 %{_bindir}/savedefconfig
 %{_bindir}/setconfig
-# lib files
+
+%files -n python3-kconfiglib
+%doc README.rst
+%license LICENSE.txt
 %{python3_sitelib}/alldefconfig.py
 %{python3_sitelib}/allmodconfig.py
 %{python3_sitelib}/allnoconfig.py
@@ -86,7 +96,6 @@ TODO
 %{python3_sitelib}/__pycache__/savedefconfig.cpython-311.pyc
 %{python3_sitelib}/__pycache__/setconfig.cpython-311.opt-1.pyc
 %{python3_sitelib}/__pycache__/setconfig.cpython-311.pyc
-# egg files
 %{python3_sitelib}/kconfiglib-%{version}-py%{python3_version}.egg-info/PKG-INFO
 %{python3_sitelib}/kconfiglib-%{version}-py%{python3_version}.egg-info/PKG-INFO
 %{python3_sitelib}/kconfiglib-%{version}-py%{python3_version}.egg-info/SOURCES.txt
@@ -97,4 +106,3 @@ TODO
 %changelog
 * Mon Dec 04 2023 Leonardo Rossetti <lrossett@redhat.com> - 14.1.0-1
 - Initital spec file
-
