@@ -7,6 +7,7 @@ Summary:        Kconfig implementation in Python.
 License:        ISC
 URL:            https://github.com/ulfalizer/Kconfiglib
 Source:         https://github.com/ulfalizer/Kconfiglib/archive/refs/tags/v%{gittag}.tar.gz
+Patch:          selftest.patch
  
 BuildArch:      noarch
 
@@ -29,6 +30,12 @@ TODO
 
 %build
 %py3_build
+
+%check
+cd ..
+ln -s Kconfiglib-%{version} Kconfiglib
+%{python3} Kconfiglib/testsuite.py
+unlink Kconfiglib
 
 %install
 %py3_install
