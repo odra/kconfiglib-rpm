@@ -17,13 +17,13 @@ BuildRequires: python3-setuptools
 Requires: python3-kconfiglib
 
 %description
-TODO
+Kconfiglib is a Kconfig implementation in Python 2/3. It started out as a helper library, but now has a enough functionality to also work well as a standalone Kconfig implementation (including terminal and GUI menuconfig interfaces and Kconfig extensions).
 
 %package -n python3-kconfiglib
 Summary: Kconfig implementation in Python (library)
 
 %description -n python3-kconfiglib
-TODO
+The kconfiglib's python library only sub-package.
 
 %prep
 %autosetup -n Kconfiglib-%{version}
