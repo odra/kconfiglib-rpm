@@ -11,6 +11,7 @@ Source:         https://github.com/ulfalizer/Kconfiglib/archive/refs/tags/v%{git
 BuildArch:      noarch
 
 BuildRequires: python3-devel
+BuildRequires: python3-setuptools
 
 %description
 TODO
