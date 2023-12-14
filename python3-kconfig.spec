@@ -60,49 +60,20 @@ unlink Kconfiglib
 %files -n python3-kconfiglib
 %doc README.rst
 %license LICENSE.txt
-%{python3_sitelib}/alldefconfig.py
-%{python3_sitelib}/allmodconfig.py
-%{python3_sitelib}/allnoconfig.py
-%{python3_sitelib}/allyesconfig.py
-%{python3_sitelib}/defconfig.py
-%{python3_sitelib}/genconfig.py
-%{python3_sitelib}/guiconfig.py
-%{python3_sitelib}/kconfiglib.py
-%{python3_sitelib}/listnewconfig.py
-%{python3_sitelib}/menuconfig.py
-%{python3_sitelib}/oldconfig.py
-%{python3_sitelib}/olddefconfig.py
-%{python3_sitelib}/savedefconfig.py
-%{python3_sitelib}/setconfig.py
-# pycache files
-%{python3_sitelib}/__pycache__/alldefconfig.cpython-311.opt-1.pyc
-%{python3_sitelib}/__pycache__/alldefconfig.cpython-311.pyc
-%{python3_sitelib}/__pycache__/allmodconfig.cpython-311.opt-1.pyc
-%{python3_sitelib}/__pycache__/allmodconfig.cpython-311.pyc
-%{python3_sitelib}/__pycache__/allnoconfig.cpython-311.opt-1.pyc
-%{python3_sitelib}/__pycache__/allnoconfig.cpython-311.pyc
-%{python3_sitelib}/__pycache__/allyesconfig.cpython-311.opt-1.pyc
-%{python3_sitelib}/__pycache__/allyesconfig.cpython-311.pyc
-%{python3_sitelib}/__pycache__/defconfig.cpython-311.opt-1.pyc
-%{python3_sitelib}/__pycache__/defconfig.cpython-311.pyc
-%{python3_sitelib}/__pycache__/genconfig.cpython-311.opt-1.pyc
-%{python3_sitelib}/__pycache__/genconfig.cpython-311.pyc
-%{python3_sitelib}/__pycache__/guiconfig.cpython-311.opt-1.pyc
-%{python3_sitelib}/__pycache__/guiconfig.cpython-311.pyc
-%{python3_sitelib}/__pycache__/kconfiglib.cpython-311.opt-1.pyc
-%{python3_sitelib}/__pycache__/kconfiglib.cpython-311.pyc
-%{python3_sitelib}/__pycache__/listnewconfig.cpython-311.opt-1.pyc
-%{python3_sitelib}/__pycache__/listnewconfig.cpython-311.pyc
-%{python3_sitelib}/__pycache__/menuconfig.cpython-311.opt-1.pyc
-%{python3_sitelib}/__pycache__/menuconfig.cpython-311.pyc
-%{python3_sitelib}/__pycache__/oldconfig.cpython-311.opt-1.pyc
-%{python3_sitelib}/__pycache__/oldconfig.cpython-311.pyc
-%{python3_sitelib}/__pycache__/olddefconfig.cpython-311.opt-1.pyc
-%{python3_sitelib}/__pycache__/olddefconfig.cpython-311.pyc
-%{python3_sitelib}/__pycache__/savedefconfig.cpython-311.opt-1.pyc
-%{python3_sitelib}/__pycache__/savedefconfig.cpython-311.pyc
-%{python3_sitelib}/__pycache__/setconfig.cpython-311.opt-1.pyc
-%{python3_sitelib}/__pycache__/setconfig.cpython-311.pyc
+%pycached %{python3_sitelib}/alldefconfig.py
+%pycached %{python3_sitelib}/allmodconfig.py
+%pycached %{python3_sitelib}/allnoconfig.py
+%pycached %{python3_sitelib}/allyesconfig.py
+%pycached %{python3_sitelib}/defconfig.py
+%pycached %{python3_sitelib}/genconfig.py
+%pycached %{python3_sitelib}/guiconfig.py
+%pycached %{python3_sitelib}/kconfiglib.py
+%pycached %{python3_sitelib}/listnewconfig.py
+%pycached %{python3_sitelib}/menuconfig.py
+%pycached %{python3_sitelib}/oldconfig.py
+%pycached %{python3_sitelib}/olddefconfig.py
+%pycached %{python3_sitelib}/savedefconfig.py
+%pycached %{python3_sitelib}/setconfig.py
 %{python3_sitelib}/kconfiglib-%{version}-py%{python3_version}.egg-info/PKG-INFO
 %{python3_sitelib}/kconfiglib-%{version}-py%{python3_version}.egg-info/PKG-INFO
 %{python3_sitelib}/kconfiglib-%{version}-py%{python3_version}.egg-info/SOURCES.txt
