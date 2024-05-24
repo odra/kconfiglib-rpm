@@ -44,6 +44,20 @@ unlink Kconfiglib
 %install
 %py3_install
 
+sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/alldefconfig.py'
+sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/allmodconfig.py'
+sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/allnoconfig.py'
+sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/allyesconfig.py'
+sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/defconfig.py'
+sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/genconfig.py'
+sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/guiconfig.py'
+sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/listnewconfig.py'
+sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/menuconfig.py'
+sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/oldconfig.py'
+sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/olddefconfig.py'
+sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/savedefconfig.py'
+sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/setconfig.py'
+
 %files
 %doc README.rst
 %license LICENSE.txt
