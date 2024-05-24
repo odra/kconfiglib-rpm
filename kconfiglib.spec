@@ -1,12 +1,10 @@
-%global gittag 14.1.0
-
 Name:           kconfiglib
-Version:        %{gittag}
+Version:        14.1.0
 Release:        1%{?dist}
-Summary:        Kconfig implementation in Python.
+Summary:        Kconfig implementation in Python
 License:        ISC
 URL:            https://github.com/ulfalizer/Kconfiglib
-Source:         https://github.com/ulfalizer/Kconfiglib/archive/refs/tags/v%{gittag}.tar.gz
+Source:         %{url}/archive/refs/tags/v%{version}.tar.gz
 Patch:          selftest.patch
  
 BuildArch:      noarch
@@ -16,8 +14,14 @@ BuildRequires: python3-setuptools
 
 Requires: python3-kconfiglib
 
-%description
-Kconfiglib is a Kconfig implementation in Python 2/3. It started out as a helper library, but now has a enough functionality to also work well as a standalone Kconfig implementation (including terminal and GUI menuconfig interfaces and Kconfig extensions).
+%global _description %{expand:
+Kconfiglib is a Kconfig implementation in Python 2/3. It started out as a
+helper library, but now has a enough functionality to also work well as a
+standalone Kconfig implementation (including terminal and GUI menuconfig
+interfaces and Kconfig extensions).
+}
+
+%description %_description
 
 %package -n python3-kconfiglib
 Summary: Kconfig implementation in Python (library)
@@ -39,6 +43,20 @@ unlink Kconfiglib
 
 %install
 %py3_install
+
+sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/alldefconfig.py'
+sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/allmodconfig.py'
+sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/allnoconfig.py'
+sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/allyesconfig.py'
+sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/defconfig.py'
+sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/genconfig.py'
+sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/guiconfig.py'
+sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/listnewconfig.py'
+sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/menuconfig.py'
+sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/oldconfig.py'
+sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/olddefconfig.py'
+sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/savedefconfig.py'
+sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/setconfig.py'
 
 %files
 %doc README.rst
