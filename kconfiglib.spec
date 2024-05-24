@@ -1,7 +1,7 @@
 Name:           kconfiglib
 Version:        14.1.0
 Release:        1%{?dist}
-Summary:        Kconfig implementation in Python.
+Summary:        Kconfig implementation in Python
 License:        ISC
 URL:            https://github.com/ulfalizer/Kconfiglib
 Source:         %{url}/archive/refs/tags/v%{version}.tar.gz
