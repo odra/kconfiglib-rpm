@@ -1,3 +1,17 @@
+%global binfiles "alldefconfig \
+allmodconfig \
+allnoconfig \
+allyesconfig \
+defconfig \
+genconfig \
+guiconfig \
+listnewconfig \
+menuconfig \
+oldconfig \
+olddefconfig \
+savedefconfig \
+setconfig"
+
 Name:           kconfiglib
 Version:        14.1.0
 Release:        1%{?dist}
@@ -11,6 +25,7 @@ BuildArch:      noarch
 
 BuildRequires: python3-devel
 BuildRequires: python3-setuptools
+BuildRequires:  help2man
 
 Requires: python3-kconfiglib
 
@@ -58,6 +73,18 @@ sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/olddefconfig.py'
 sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/savedefconfig.py'
 sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/setconfig.py'
 
+install -d '%{buildroot}%{_mandir}/man1'
+
+for binfile in %{binfiles}; do
+    PYTHONPATH='%{buildroot}%{python3_sitelib}' \
+    help2man \
+    --no-info \
+    --version-string='%{version}' \
+    --name=${binfile} \
+    --output='%{buildroot}%{_mandir}/man1/${binfile}.1'
+    > '%{buildroot}%{_bindir}/${binfile}'
+done
+
 %files
 %doc README.rst
 %license LICENSE.txt
@@ -74,6 +101,21 @@ sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/setconfig.py'
 %{_bindir}/olddefconfig
 %{_bindir}/savedefconfig
 %{_bindir}/setconfig
+%{_mandir}/alldefconfig.1*
+%{_mandir}/allmodconfig.1*
+%{_mandir}/allnoconfig.1*
+%{_mandir}/allyesconfig.1*
+%{_mandir}/defconfig.1*
+%{_mandir}/genconfig.1*
+%{_mandir}/guiconfig.1*
+%{_mandir}/listnewconfig.1*
+%{_mandir}/menuconfig.1*
+%{_mandir}/oldconfig.1*
+%{_mandir}/olddefconfig.1*
+%{_mandir}/savedefconfig.1*
+%{_mandir}/setconfig.1*
+
+
 
 %files -n python3-kconfiglib
 %doc README.rst
