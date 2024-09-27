@@ -1,20 +1,6 @@
-%global binfiles "alldefconfig \
-allmodconfig \
-allnoconfig \
-allyesconfig \
-defconfig \
-genconfig \
-guiconfig \
-listnewconfig \
-menuconfig \
-oldconfig \
-olddefconfig \
-savedefconfig \
-setconfig"
-
 Name:           kconfiglib
 Version:        14.1.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Kconfig implementation in Python
 License:        ISC
 URL:            https://github.com/ulfalizer/Kconfiglib
@@ -28,6 +14,8 @@ BuildRequires: python3-setuptools
 BuildRequires:  help2man
 
 Requires: python3-kconfiglib
+
+%global _help2man() PYTHONPATH='%{buildroot}%{python3_sitelib}' help2man --version-string='%{version}' --no-discard-stderr  --no-info --name=%1 --output=%{buildroot}%{_mandir}/man1/%1.1 %{buildroot}%{_bindir}/%1
 
 %global _description %{expand:
 Kconfiglib is a Kconfig implementation in Python 2/3. It started out as a
@@ -75,15 +63,19 @@ sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/setconfig.py'
 
 install -d '%{buildroot}%{_mandir}/man1'
 
-for binfile in %{binfiles}; do
-    PYTHONPATH='%{buildroot}%{python3_sitelib}' \
-    help2man \
-    --no-info \
-    --version-string='%{version}' \
-    --name=${binfile} \
-    --output='%{buildroot}%{_mandir}/man1/${binfile}.1'
-    > '%{buildroot}%{_bindir}/${binfile}'
-done
+%_help2man alldefconfig
+%_help2man allmodconfig
+%_help2man allnoconfig
+%_help2man allyesconfig
+%_help2man defconfig
+%_help2man genconfig
+%_help2man guiconfig
+%_help2man listnewconfig
+%_help2man menuconfig
+%_help2man oldconfig
+%_help2man olddefconfig
+%_help2man savedefconfig
+%_help2man setconfig
 
 %files
 %doc README.rst
@@ -101,21 +93,19 @@ done
 %{_bindir}/olddefconfig
 %{_bindir}/savedefconfig
 %{_bindir}/setconfig
-%{_mandir}/alldefconfig.1*
-%{_mandir}/allmodconfig.1*
-%{_mandir}/allnoconfig.1*
-%{_mandir}/allyesconfig.1*
-%{_mandir}/defconfig.1*
-%{_mandir}/genconfig.1*
-%{_mandir}/guiconfig.1*
-%{_mandir}/listnewconfig.1*
-%{_mandir}/menuconfig.1*
-%{_mandir}/oldconfig.1*
-%{_mandir}/olddefconfig.1*
-%{_mandir}/savedefconfig.1*
-%{_mandir}/setconfig.1*
-
-
+%{_mandir}/man1/alldefconfig.1*
+%{_mandir}/man1/allmodconfig.1*
+%{_mandir}/man1/allnoconfig.1*
+%{_mandir}/man1/allyesconfig.1*
+%{_mandir}/man1/defconfig.1*
+%{_mandir}/man1/genconfig.1*
+%{_mandir}/man1/guiconfig.1*
+%{_mandir}/man1/listnewconfig.1*
+%{_mandir}/man1/menuconfig.1*
+%{_mandir}/man1/oldconfig.1*
+%{_mandir}/man1/olddefconfig.1*
+%{_mandir}/man1/savedefconfig.1*
+%{_mandir}/man1/setconfig.1*
 
 %files -n python3-kconfiglib
 %doc README.rst
@@ -142,5 +132,8 @@ done
 %{python3_sitelib}/kconfiglib-%{version}-py%{python3_version}.egg-info/top_level.txt
 
 %changelog
+* Fri Sep 27 2024 Leonardo Rossetti <lrossett@redhat.com> - 14.1.0-2
+- help2man support
+
 * Mon Dec 04 2023 Leonardo Rossetti <lrossett@redhat.com> - 14.1.0-1
 - Initital spec file
