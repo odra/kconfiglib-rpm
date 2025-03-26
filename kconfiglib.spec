@@ -1,9 +1,9 @@
 Name:           kconfiglib
 Version:        14.1.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Kconfig implementation in Python
 License:        ISC
-URL:            https://github.com/ulfalizer/Kconfiglib
+URL:            https://github.com/zephyrproject-rtos/Kconfiglib
 Source:         %{url}/archive/refs/tags/v%{version}.tar.gz
 Patch:          selftest.patch
  
@@ -132,6 +132,9 @@ install -d '%{buildroot}%{_mandir}/man1'
 %{python3_sitelib}/kconfiglib-%{version}-py%{python3_version}.egg-info/top_level.txt
 
 %changelog
+* Wed Mar 26 2025 Leonardo Rossetti <lrossett@redhat.com> - 14.1.0-3
+- change to zenphyr repository org.
+
 * Fri Sep 27 2024 Leonardo Rossetti <lrossett@redhat.com> - 14.1.0-2
 - help2man support
 
