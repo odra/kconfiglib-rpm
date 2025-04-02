@@ -11,9 +11,7 @@ BuildArch:      noarch
 
 BuildRequires: python3-devel
 BuildRequires: python3-setuptools
-BuildRequires:  help2man
-
-Requires: python3-kconfiglib
+BuildRequires: help2man
 
 %global _help2man() PYTHONPATH='%{buildroot}%{python3_sitelib}' help2man --version-string='%{version}' --no-discard-stderr  --no-info --name=%1 --output=%{buildroot}%{_mandir}/man1/%1.1 %{buildroot}%{_bindir}/%1
 
@@ -44,24 +42,7 @@ ln -s Kconfiglib-%{version} Kconfiglib
 %{python3} Kconfiglib/testsuite.py
 unlink Kconfiglib
 
-%install
-%py3_install
-
-sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/alldefconfig.py'
-sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/allmodconfig.py'
-sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/allnoconfig.py'
-sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/allyesconfig.py'
-sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/defconfig.py'
-sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/genconfig.py'
-sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/guiconfig.py'
-sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/listnewconfig.py'
-sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/menuconfig.py'
-sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/oldconfig.py'
-sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/olddefconfig.py'
-sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/savedefconfig.py'
-sed -r -i '1{/^#!/d}' '%{buildroot}%{python3_sitelib}/setconfig.py'
-
-install -d '%{buildroot}%{_mandir}/man1'
+%bcond_with bootstrap
 
 %_help2man alldefconfig
 %_help2man allmodconfig
@@ -76,6 +57,25 @@ install -d '%{buildroot}%{_mandir}/man1'
 %_help2man olddefconfig
 %_help2man savedefconfig
 %_help2man setconfig
+
+%install
+%py3_install
+
+%py3_shebang_fix '%{buildroot}%{python3_sitelib}/alldefconfig.py'
+%py3_shebang_fix '%{buildroot}%{python3_sitelib}/allmodconfig.py'
+%py3_shebang_fix '%{buildroot}%{python3_sitelib}/allnoconfig.py'
+%py3_shebang_fix '%{buildroot}%{python3_sitelib}/allyesconfig.py'
+%py3_shebang_fix '%{buildroot}%{python3_sitelib}/defconfig.py'
+%py3_shebang_fix '%{buildroot}%{python3_sitelib}/genconfig.py'
+%py3_shebang_fix '%{buildroot}%{python3_sitelib}/guiconfig.py'
+%py3_shebang_fix '%{buildroot}%{python3_sitelib}/listnewconfig.py'
+%py3_shebang_fix '%{buildroot}%{python3_sitelib}/menuconfig.py'
+%py3_shebang_fix '%{buildroot}%{python3_sitelib}/oldconfig.py'
+%py3_shebang_fix '%{buildroot}%{python3_sitelib}/olddefconfig.py'
+%py3_shebang_fix '%{buildroot}%{python3_sitelib}/savedefconfig.py'
+%py3_shebang_fix '%{buildroot}%{python3_sitelib}/setconfig.py'
+
+install -d '%{buildroot}%{_mandir}/man1'
 
 %files
 %doc README.rst
@@ -132,6 +132,9 @@ install -d '%{buildroot}%{_mandir}/man1'
 %{python3_sitelib}/kconfiglib-%{version}-py%{python3_version}.egg-info/top_level.txt
 
 %changelog
+* Tues Apr 01 2025 Leonardo Rossetti <lrossett@redhat.com> - 14.1.0-4
+- use built-in python macros
+
 * Wed Mar 26 2025 Leonardo Rossetti <lrossett@redhat.com> - 14.1.0-3
 - change to zenphyr repository org.
 
