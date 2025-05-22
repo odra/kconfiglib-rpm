@@ -1,6 +1,6 @@
 Name:           kconfiglib
 Version:        14.1.0
-Release:        3%{?dist}
+Release:        5%{?dist}
 Summary:        Kconfig implementation in Python
 License:        ISC
 URL:            https://github.com/zephyrproject-rtos/Kconfiglib
@@ -78,6 +78,7 @@ unlink Kconfiglib
 install -d '%{buildroot}%{_mandir}/man1'
 
 %files
+%dir %{python3_sitelib}/kconfiglib-%{version}-py%{python3_version}.egg-info/
 %doc README.rst
 %license LICENSE.txt
 %{_bindir}/alldefconfig
@@ -132,7 +133,10 @@ install -d '%{buildroot}%{_mandir}/man1'
 %{python3_sitelib}/kconfiglib-%{version}-py%{python3_version}.egg-info/top_level.txt
 
 %changelog
-* Tues Apr 01 2025 Leonardo Rossetti <lrossett@redhat.com> - 14.1.0-4
+* Thu May 22 2025 Leonardo Rossetti <lrossett@redhat.com> - 14.1.0-5
+- Add egg-info dir in directory listing
+
+* Tue Apr 01 2025 Leonardo Rossetti <lrossett@redhat.com> - 14.1.0-4
 - use built-in python macros
 
 * Wed Mar 26 2025 Leonardo Rossetti <lrossett@redhat.com> - 14.1.0-3
